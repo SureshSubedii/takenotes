@@ -1,0 +1,78 @@
+
+.notes{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(220, 220, 207);
+    background-image:url('./clipB.png');
+    background-repeat: no-repeat;
+    background-position-x:-15% ;
+    background-size:55% ;
+    background-position-y:10% ;
+
+}
+form>textarea{
+    outline: none;
+    border:none;
+    font-size:32px;
+    white-space: pre-wrap !important;  /*allow line breaks */
+    overflow-wrap: break-word !important;   /*break long words if necessary*/
+     /* width: auto; */
+    height: 750px;
+
+
+}
+
+input{
+    outline: none;
+    border:none;
+    font-size:32px;
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 28%;
+    margin-top: 10%;
+    margin-left: 6.7%;
+}
+.notes_title{
+    border-bottom:2px solid rgb(201, 196, 196) ;
+    padding: 0px;
+}
+@media screen and (max-width:400px) {
+    .notes{
+    background-size:95% ;
+    background-position-y:1% ;
+    background-position-x:-145% ;
+
+
+
+    }
+    form>input{
+        font-size: 12px;
+
+    }
+    form>textarea{
+    font-size: 12px;
+    height: 200px;
+
+
+
+    }
+    form{
+    margin-top: 20%;
+    margin-left: 16%;
+    width: 48%;
+
+
+
+
+    }
+    .notes_title{
+        border-bottom:1px solid rgb(201, 196, 196) ;
+    }
+    
+}
