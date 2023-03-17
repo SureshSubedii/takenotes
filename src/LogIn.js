@@ -10,15 +10,32 @@ function LogIn() {
     const dispatch=useDispatch();
     const handleSignup=(e)=>{
       e.preventDefault();
-        auth.createUserWithEmailAndPassword(email,password).then(
-          dispatch(logIn({
-            email:email
 
-          }))
-        )
+        auth.createUserWithEmailAndPassword(email,password).then(
+          (userAuth)=>{
+            userAuth.user.updateProfile({
+              email:email
+            }
+          ).then(()=>{
+              dispatch(logIn({
+                email:email
+    
+              }))
+            })
+          }
+        ).catch((error)=>alert(error))
 
     }
-    const handleLogin=()=>{
+    const handleLogin=(e)=>{
+      e.preventDefault();
+
+      auth.signInWithEmailAndPassword(email,password).then((userAuth)=>{
+        
+        dispatch(logIn({
+          email:userAuth.user.email
+
+        }))
+      }).catch((error)=>alert(error))
         
     }
   return (

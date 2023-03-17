@@ -11,6 +11,13 @@
     background-size:contain ;
 
 }
+.row{
+    margin-left: 600px;
+}
+.notes>h1{
+    margin-left: 700px;
+    margin-top: -650px;
+}
 form>textarea{
 
     outline: none;
@@ -52,7 +59,7 @@ form{
 }
 @media screen and (max-width:400px) {
     .notes{
-        position: fixed;
+        position: absolute;
     background-size:95% ;
     background-position-y:1% ;
     background-position-x:-145% ;
@@ -60,9 +67,17 @@ form{
 
 
     }
+    .row{
+        margin-left: 5px;
+    }
     form>input{
         font-size: 12px;
 
+    }
+    .notes>h1{
+        margin-left: 60px;
+        margin-top: 20px;
+        font-size: 14px;
     }
     form>textarea{
     font-size: 12px;

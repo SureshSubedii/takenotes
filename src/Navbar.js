@@ -1,8 +1,17 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { logOut } from './features/userSlice'
+import { auth } from './firebase'
 import './Navbar.css'
 
 function Navbar() {
+  const dispatch=useDispatch()
+  const handleClick=()=>{
+    auth.signOut()
+    dispatch(logOut())
+
+  }
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary my-0" >
   <div className="container-fluid">
@@ -24,8 +33,11 @@ function Navbar() {
         
     
       </ul>
+  <div onClick={handleClick} className="btn btn-primary text-white">LogOut</div>
+
       
     </div>
+
   </div>
 </nav>
   )
