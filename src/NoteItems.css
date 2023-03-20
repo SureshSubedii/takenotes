@@ -2,11 +2,36 @@
 
     margin-bottom: 10px;
 }
+
+span{
+    color: black;
+    padding: 2px;
+    margin-left:0;
+    display: flex;
+    justify-content:space-between
+
+
+}
+.MuiSvgIcon-root:hover{
+    cursor: pointer;
+    color: gray;
+    margin-left: 0;
+}
+
 @media screen and (max-width:400px){
     .container{
-        width: 70px;
-        margin-left:5px;
-        font-size: 12px;
+        font-size: 10px;
+    }
+    .container>.h5,h5{
+        font-size: 0.8rem !important;
+
+
+    }
+    .card{
+        width: 5rem;
+    }
+    .MuiSvgIcon-root{
+        font-size: 17px !important;
     }
 
 }
