@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { logIn } from './features/userSlice';
 import { auth } from './firebase';
 import './Login.css'
@@ -8,6 +9,7 @@ function LogIn() {
     const [password, setpassword] = useState("");
     const [email, setemail] = useState("");
     const dispatch=useDispatch();
+    const navigate=useNavigate();
     const handleSignup=(e)=>{
       e.preventDefault();
 

@@ -31,14 +31,15 @@ function App() {
   return (
     <Router>
     
-      {!user?(<LogIn/>): (
+      {!user?(<LogIn/>   
+        ): (
     <div className="app">
     <Navbar/>
       <Routes>
-      <Route exact path="/about" element={<About/>}/>
-      <Route exact path="/" element={<Front/>}/>
-      <Route exact path="/notes" element={<Notes/>}/>
-      <Route exact path="/login" element={<LogIn/>}/>
+      <Route exact path="/about" element={<Front/>}/>
+      <Route exact path="/" element={<Notes/>}/>
+
+
 
 
 

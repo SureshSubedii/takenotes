@@ -14,7 +14,7 @@ function Notes() {
   const user=useSelector(selectUser);
   const [notes, setnotes] = useState([]);
 
-
+ 
   const submit=(data)=>{
     db.collection("notes").add({
       title:data.title,
@@ -55,8 +55,8 @@ function Notes() {
        
       <h1> Your Notes :</h1> 
       <div className="row my-1 " >
-      {userNotes.map(({id,data:{title,description}})=>(
-        <NoteItems key={id} title={title} description={description}/>
+      {userNotes.map(({id,data:{title,description,timestamp}})=>(
+        <NoteItems key={id} id={id} title={title} description={description} />
         
       ))}
       </div>
