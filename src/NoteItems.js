@@ -49,7 +49,7 @@ function NoteItems({title,description,id,time}) {
 
   return (
     <div  className="col mx-1">
-    <div>
+    <div className="container" >
         <div className="card my-1" style={{width: "11.6rem"}}>
           <div className="card-body">
             <h5 className="card-title border align-items-center">{title}</h5>
