@@ -30,11 +30,11 @@ function App() {
   
   return (
     <Router>
+    <Navbar/>
     
       {!user?(<LogIn/>   
         ): (
     <div className="app">
-    <Navbar/>
       <Routes>
       <Route exact path="/about" element={<Front/>}/>
       <Route exact path="/" element={<Notes/>}/>

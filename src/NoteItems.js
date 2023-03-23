@@ -1,5 +1,5 @@
 import { Create, DeleteForever } from '@mui/icons-material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { db } from './firebase'
 import './NoteItems.css'
 import 'firebase/compat/database';
@@ -8,11 +8,13 @@ import Edit from './Edit'
 function NoteItems({title,description,id,time}) {
   let Time = time?.toDate();
   const [showModal, setShowModal] = useState(false);
+  const [titles,setTitle]=useState(title)
+  const [desc,setdesc]=useState(description)
+
+
 
   const handleDelete = () => {
-    console.log(id)
     db.collection("notes").doc(id).delete().then(() => {
-      console.log("Successful")
     }).catch(error => {
       console.log(error.message)
     })
@@ -20,16 +22,34 @@ function NoteItems({title,description,id,time}) {
 
   const handleEdit = () => {
     setShowModal(true);
+  
+
+    
+  }
+  const saveChanges=()=>{
+    db.collection("notes").doc(id).update({
+      title:titles,
+      description:desc
+
+    }).then(() => {
+    }).catch(error => {
+      console.log(error.message)
+    })
+    setShowModal(false);
+
+
+
   }
 
   const closeModal = () => {
     setShowModal(false);
   }
+  
+  
 
   return (
+    <div  className="col mx-1">
     <div>
-    <div className="col" style={{padding:'0 1px'}}>
-      <div className="container">
         <div className="card my-1" style={{width: "11.6rem"}}>
           <div className="card-body">
             <h5 className="card-title border align-items-center">{title}</h5>
@@ -42,35 +62,27 @@ function NoteItems({title,description,id,time}) {
           </div>
         </div>
       </div>
-      </div>
       {showModal &&
-       <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-       <div className="modal-dialog">
-         <div className="modal-content">
-           <div className="modal-header">
-             <h1 className="modal-title fs-5" id="exampleModalLabel">New message</h1>
-             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     
+     <div class="modal d-block" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Note</h1>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" onClick={closeModal} aria-label="Close"></button>
            </div>
-           <div className="modal-body">
-             <form>
-               <div className="mb-3">
-                 <label htmlFor="recipient-name" className="col-form-label">Recipient:</label>
-                 <input type="text" className="form-control" id="recipient-name"/>
-               </div>
-               <div className="mb-3">
-                 <label htmlFor="message-text" className="col-form-label">Message:</label>
-                 <textarea className="form-control" id="message-text"></textarea>
-               </div>
-             </form>
-           </div>
-           <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={closeModal}>Close</button>
+           <div class="modal-body ">
+            <textarea style={{width:'max-width'}}  value={titles} onChange={e=>setTitle(e.target.value)} placeholder="title"></textarea> <br/>
+            <textarea style={{width:'max-width'}}  value={desc} onChange={e=>setdesc(e.target.value)}></textarea>
 
-             <button type="button" className="btn btn-primary">Send message</button>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary"  onClick={closeModal}data-bs-dismiss="modal">Close</button>
+             <button type="button" class="btn btn-primary" onClick={saveChanges}>Save changes</button>
            </div>
          </div>
        </div>
-     </div> 
+     </div>
           }
      </div> 
 

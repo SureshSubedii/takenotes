@@ -1,7 +1,7 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { logOut } from './features/userSlice'
+import { logOut, selectUser } from './features/userSlice'
 import { auth } from './firebase'
 import './Navbar.css'
 
@@ -12,6 +12,7 @@ function Navbar() {
     dispatch(logOut())
 
   }
+  const user=useSelector(selectUser);
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary my-0" >
   <div className="container-fluid">
@@ -22,18 +23,16 @@ function Navbar() {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link className="nav-link text-white" aria-current="page" to="/">Home</Link>
+          <Link className={`nav-link text-${user?'white':''} ${user?'':'disabled'}` } aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <Link  className="nav-link text-white"  to="/about">About</Link>
+          <Link  className={`nav-link text-${user?'white':''} ${user?'':'disabled'}`}  to="/about">About</Link>
         </li>
-        {/* <li className="nav-item">
-          <Link  className="nav-link text-white"  to="/">Front</Link>
-        </li> */}
+        
         
     
       </ul>
-  <div onClick={handleClick} className="btn btn-primary text-white">LogOut</div>
+  <div onClick={handleClick} className={`btn btn-primary text-white  ${user?'':'d-none'} `}>LogOut</div>
 
       
     </div>
