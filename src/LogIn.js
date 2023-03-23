@@ -42,7 +42,8 @@ function LogIn() {
     }
   return (
     <div className="login">
-        <h1>   Enter the details below  to continue</h1>
+      <h2>This app lets you take notes and store them in the cloud.</h2>
+        <h2>   Enter the details below  to continue</h2>
         <h3>SignUp if new, else Login and get started.</h3>
         <form>
             <input value={email} onChange={(e)=>setemail(e.target.value)} placeholder="Enter email" name="email" type="email"/>

@@ -56,7 +56,7 @@ function Notes() {
       <h1> Your Notes :</h1> 
       <div className="row my-1 " >
       {userNotes.map(({id,data:{title,description,timestamp}})=>(
-        <NoteItems key={id} id={id} title={title} description={description} />
+        <NoteItems key={id} id={id} title={title} time={timestamp} description={description} />
         
       ))}
       </div>
